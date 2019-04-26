@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,25 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         /// <summary>
         /// BL8-P1/3. Cоздать структуру 2DRectangle, которая будет содержать ширину, высоту и координату.
         /// </summary>
+        public struct Rectangle
+        {
+            public int width;
+            public int height;
+            //public int[] XY;
+            public Rectangle(int width, int height)
+                {
+                    this.width= width;
+                    this.height= height;
+                    //XY = new int[]{0, 0};
+                }
+        }
         public static void Lb8_P1_3()
         {
+            var rect = new Rectangle();
+            rect.height = 200;
+            rect.width = 300;
+            //rect.XY = new int[] { 20, 30 };
+            //rect.DisplayToInfo();
         }
 
 
@@ -25,6 +43,26 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         /// </summary>
         public static void Lb8_P2_3()
         {
+            
+            var massRectangle = new List<Rectangle>();
+            for (int i = 0; i < 100; i++)
+            {
+                Rectangle rect = new Rectangle((int)random.Next(1,10), (int)random.Next(1,10));
+                massRectangle.Add(rect);
+            }
+            int numDuplicate = 0;
+            for (int i = 0; i < massRectangle.Count; i++)
+            {
+                for (int j = 1; j+i < 100; j++)
+                {
+                    if(massRectangle[i].Equals(massRectangle[i+j]))
+                    {
+                        numDuplicate += 1;
+                        break;
+                    }
+                }
+            }
+            Console.WriteLine(numDuplicate);
         }
 
         /// <summary>
