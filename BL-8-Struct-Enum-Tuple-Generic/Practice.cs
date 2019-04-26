@@ -49,26 +49,26 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         public static void Lb8_P2_3()
         {
             
-            var massRectangle = new ArrayList();
+            var massRectangle = new List<Rectangle>();
             for (int i = 0; i < 100; i++)
             {
-                var rect = new Rectangle((int)random.Next(1,10), (int)random.Next(1,10));
+                Rectangle rect = new Rectangle((int)random.Next(1,10), (int)random.Next(1,10));
                 massRectangle.Add(rect);
             }
-            foreach(Rectangle rect in massRectangle)
+            int numDuplicate = 0;
+            for (int i = 0; i < massRectangle.Count; i++)
             {
-                int numDuplicates = 0;
-                int width = rect.width;
-                int height = rect.height;
-                foreach (Rectangle rect1 in massRectangle)
+                for (int j = 1; j+i < 100; j++)
                 {
-                    if (width == rect.width & height == rect1.height & Object.Equals((object)rect,(object)rect1)==false)
+                    Rectangle h = massRectangle[i];
+                    if( Convert.ToInt32(massRectangle[i].height)== Convert.ToInt32(massRectangle[j+i].height) & Convert.ToInt32(massRectangle[i].width) == Convert.ToInt32(massRectangle[j + i].width))
                     {
-                        numDuplicates += 1;
+                        numDuplicate += 1;
+                        break;
                     }
                 }
-                Console.WriteLine($"number of duplicates = {numDuplicates} ;");
             }
+            Console.WriteLine(numDuplicate);
         }
 
         /// <summary>
