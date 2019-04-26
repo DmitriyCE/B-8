@@ -19,26 +19,21 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         {
             public int width;
             public int height;
-            public int[] XY;
+            //public int[] XY;
             public Rectangle(int width, int height)
                 {
                     this.width= width;
                     this.height= height;
-                    this.XY = new int[]{0, 0};
+                    //XY = new int[]{0, 0};
                 }
-            public void DisplayToInfo()
-            {
-                Console.WriteLine($"{width},{height},{XY[0]},{XY[1]}");
-            }
-
         }
         public static void Lb8_P1_3()
         {
             var rect = new Rectangle();
             rect.height = 200;
             rect.width = 300;
-            rect.XY = new int[] { 20, 30 };
-            rect.DisplayToInfo();
+            //rect.XY = new int[] { 20, 30 };
+            //rect.DisplayToInfo();
         }
 
 
@@ -60,8 +55,7 @@ namespace BL_8_Struct_Enum_Tuple_Generic
             {
                 for (int j = 1; j+i < 100; j++)
                 {
-                    Rectangle h = massRectangle[i];
-                    if( Convert.ToInt32(massRectangle[i].height)== Convert.ToInt32(massRectangle[j+i].height) & Convert.ToInt32(massRectangle[i].width) == Convert.ToInt32(massRectangle[j + i].width))
+                    if(massRectangle[i].Equals(massRectangle[i+j]))
                     {
                         numDuplicate += 1;
                         break;
